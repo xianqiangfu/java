@@ -1,0 +1,29 @@
+package com.spring.jdbctemplate;
+
+
+import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+
+import org.springframework.jdbc.core.JdbcTemplate;
+
+public class jdbctemplate {
+
+	 private JdbcTemplate jdbcT = (JdbcTemplate) SpringUtil
+	            .getBean("jdbcTemplate");
+
+	 public List findALL() {
+	        String sql = "select * from BookInfo";
+	        return jdbcT.queryForList(sql);        
+	    }
+	    
+	    public static void main(String[] args) {        
+	        List<Book> books = new BookDao().findALLBooks();;
+	        for(Book book:books){
+	            System.out.println(book.getBid()+","+book.getBookName()+","+book.getBookType());
+	        }
+	    }
+
+}

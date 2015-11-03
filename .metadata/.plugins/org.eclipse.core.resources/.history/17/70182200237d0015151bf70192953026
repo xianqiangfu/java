@@ -1,0 +1,12 @@
+package com.test.quartz;
+
+import org.springframework.jdbc.core.JdbcTemplate;
+
+import com.spring.jdbctemplate.SpringUtil;
+
+public class QuartzJob {
+	public void work() {
+		JdbcTemplate jdbcT = (JdbcTemplate) SpringUtil
+	            .getBean("jdbcTemplate");
+	}
+}

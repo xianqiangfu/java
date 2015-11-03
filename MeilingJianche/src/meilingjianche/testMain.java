@@ -1,0 +1,34 @@
+package meilingjianche;
+
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
+public class testMain {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		String IP = "192.168.0.123";
+		String PORT = "1433";
+		String DATABASE = "test";
+		ResultSet rs;
+		
+		MSSQLOperation test = new MSSQLOperation(IP, PORT, DATABASE);
+		
+	
+		test.GetConnection();
+
+		rs = test.GetResultSet("select * from table1");
+		try {			
+			while (rs.next()) {
+				System.out.println(rs.getString(1));
+				System.out.println(rs.getString(2));
+			}
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		test.CloseConnection();
+	}
+
+}

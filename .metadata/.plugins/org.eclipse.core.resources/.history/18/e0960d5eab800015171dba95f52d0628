@@ -1,0 +1,22 @@
+package jdbcTemplateTest1;
+
+public class jdbctest {
+
+	private static void testOne() {
+		
+	}
+	
+	private static void testTwo() {
+		
+	}
+	
+	private static void testThree() {
+		
+	}
+	
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

@@ -1,0 +1,43 @@
+package com.test.quartz;
+
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.jdbc.core.JdbcTemplate;
+
+
+public class QuartzJob {
+	public void work() {
+		ApplicationContext  ctx = new ClassPathXmlApplicationContext("database.xml");
+//		JdbcTemplate jdbcT = (JdbcTemplate) ctx.getBean("jdbcTemplate");
+//		String sql = "select * from table1"; 
+//		List l = jdbcT.queryForList(sql); 
+//    	System.out.println("=============================");
+//    	Iterator iterator = l.iterator();
+//    	
+//    	 while (iterator.hasNext()) {
+//             Map map4 = (Map) iterator.next();             
+//             System.out.println("ID = " + map4.get("ID"));
+//             System.out.println("Name = " + map4.get("Name"));
+//         }
+		
+		System.out.println("11111111");
+		JdbcTemplate jdbcT = (JdbcTemplate) ctx.getBean("jdbcSanXiang");
+		String sql = "select top 1 * from Detail"; 
+		List l = jdbcT.queryForList(sql); 
+    	System.out.println("=============================");
+    	Iterator iterator = l.iterator();
+    	
+    	 while (iterator.hasNext()) {
+             Map map4 = (Map) iterator.next();             
+             System.out.println("Coding = " + map4.get("Coding"));
+             System.out.println("ItemIndex = " + map4.get("ItemIndex"));
+             System.out.println("Name = " + map4.get("Name"));
+             System.out.println("Result = " + map4.get("Result"));
+             System.out.println("Time = " + map4.get("Time"));
+         }
+	}
+}

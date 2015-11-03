@@ -1,0 +1,86 @@
+package jdbcTemplateTest1;
+
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.dao.DataAccessException;
+import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.ResultSetExtractor;
+
+
+class Customer 
+{
+	private String Id;
+	private String Name;
+	
+	public void setId(String id) {
+		this.Id = id;
+	}
+	
+	public void setName(String name) {
+		this.Name = name;
+	}
+	
+	public String getId() {
+		return Id;
+	}
+	
+	public String getName() {
+		return Name;
+	}
+}
+
+public class jdbctest {
+
+	private static ApplicationContext  ctx = new ClassPathXmlApplicationContext("bean.xml");
+	private static void testOne() {
+		JdbcTemplate jdbcTemplate = (JdbcTemplate) ctx
+	            .getBean("jdbcTemplate");
+		
+		List customerList = (List)jdbcTemplate.query("select * from table1", new ResultSetExtractor(){
+
+			@Override
+			public Object extractData(ResultSet rs) throws SQLException, DataAccessException {
+				// TODO Auto-generated method stub
+				List customers = new ArrayList();
+				while(rs.next())
+				{
+					Customer customer = new Customer();
+					customer.setId(rs.getString(1));
+					customer.setName(rs.getString(2));
+					customers.add(customer);
+				}
+				return customers;
+			}});
+		
+		Iterator iterator = customerList.iterator();
+    	
+   	 	while (iterator.hasNext()) {
+            Map map4 = (Map) iterator.next();             
+            System.out.println("ID = " + map4.get("ID"));
+            System.out.println("Name = " + map4.get("Name"));
+        }
+	}
+	
+	private static void testTwo() {
+		JdbcTemplate jdbcT = (JdbcTemplate) ctx
+	            .getBean("jdbcTemplate");
+	}
+	
+	private static void testThree() {
+		JdbcTemplate jdbcT = (JdbcTemplate) ctx
+	            .getBean("jdbcTemplate");
+	}
+	
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

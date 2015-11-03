@@ -1,0 +1,18 @@
+package meilingjianche;
+
+import java.sql.*;
+import com.microsoft.sqlserver.jdbc.*;
+public class MSSQLOperation {
+	private Connection dbConn_;
+	private String sDBUrl = "jdbc:sqlserver://" + Config.IP + ":" + Config.PORT + ";databaseName=" + Config.DATABASE;
+	
+	public MSSQLOperation() {
+		try {
+			Class.forName(Config.DRIVERNAME);
+			dbConn_ = DriverManager.getConnection(sDBUrl, Config.USER, Config.PASSWORD);
+		} catch (Exception e) {  
+			e.printStackTrace();  
+		}  
+	}
+	
+}

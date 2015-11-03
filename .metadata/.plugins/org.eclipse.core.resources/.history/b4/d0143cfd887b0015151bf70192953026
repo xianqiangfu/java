@@ -1,0 +1,10 @@
+package mssqltest;
+
+public class mssqlTest {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

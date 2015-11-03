@@ -1,0 +1,13 @@
+package meilingjianche;
+
+import java.sql.*;
+import com.microsoft.sqlserver.jdbc.*;
+public class MSSQLOperation {
+	private Connection dbConn_;
+	private String sDBUrl = "jdbc:sqlserver://" + Config.IP + ":" + Config.PORT + ";databaseName=" + Config.DATABASE;
+	
+	public MSSQLOperation() {
+		dbConn_ = 
+	}
+	
+}
